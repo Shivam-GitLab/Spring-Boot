@@ -1,17 +1,19 @@
 package com.spring.journal.entity;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import lombok.Data;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
 @Document(collection = "journal_entries")
 
-@Data
+@Setter
+@Getter
 //@Data -> @Setter //@Getter More
 
 public class JournalEntry {
@@ -19,7 +21,6 @@ public class JournalEntry {
     @Id
 //  private String id;
     private ObjectId id;
-    @NonNull
     private String title;
     private String content;
     private LocalDateTime date;

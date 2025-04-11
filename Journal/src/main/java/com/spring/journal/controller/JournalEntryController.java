@@ -14,16 +14,14 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/journal")
-public class EntryControllerV2 {
-
+public class JournalEntryController {
     @Autowired
     private EntryService journalEntryService;
-
 
     @GetMapping("/getEntry")
     public ResponseEntity<?> getAll() {
         List<JournalEntry> allEntry = journalEntryService.getAll();
-        if (allEntry!=null && !allEntry.isEmpty()){
+        if (allEntry != null && !allEntry.isEmpty()) {
             return new ResponseEntity<>(allEntry, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -44,7 +42,6 @@ public class EntryControllerV2 {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
     }
 
     /*
@@ -102,13 +99,19 @@ public class EntryControllerV2 {
         JournalEntry oldEntry = journalEntryService.findById(myId).orElse(null);
         if (oldEntry != null) {
             oldEntry.setTitle(
-                    newEntry.getTitle() != null && !newEntry.getTitle().isEmpty() ?
+                    !newEntry.getTitle().isEmpty() ?
                             newEntry.getTitle() : oldEntry.getTitle());
+            /*2. Way ^ 1 Way
+            newEntry.getTitle() != null && !newEntry.getTitle().isEmpty() ?
+                            newEntry.getTitle() : oldEntry.getTitle());
+             */
             oldEntry.setContent(
                     newEntry.getContent() != null && !newEntry.getContent().isEmpty() ?
                             newEntry.getContent() : oldEntry.getContent());
+            journalEntryService.saveEntry(oldEntry);
             return new ResponseEntity<>(oldEntry, HttpStatus.OK);
         }
+
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     /*
