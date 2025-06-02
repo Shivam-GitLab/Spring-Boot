@@ -1,7 +1,7 @@
 package com.spring.journal.controller;
 
 import com.spring.journal.entity.JournalEntry;
-import com.spring.journal.service.EntryService;
+import com.spring.journal.service.JournalEntryService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,8 @@ import java.util.Optional;
 @RequestMapping("/journal")
 public class JournalEntryController {
     @Autowired
-    private EntryService journalEntryService;
+    private JournalEntryService journalEntryService;
+
 
     @GetMapping("/getEntry")
     public ResponseEntity<?> getAll() {
@@ -26,7 +27,8 @@ public class JournalEntryController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    /*@GetMapping("/getEntry")
+    /*
+    @GetMapping("/getEntry")
     public List<JournalEntry> getAll() {
         return journalEntryService.getAll();
     }
@@ -36,7 +38,7 @@ public class JournalEntryController {
     public ResponseEntity<JournalEntry> createEntry(@RequestBody JournalEntry myEntry) {
 
         try {
-            myEntry.setDate(LocalDateTime.now());
+//            myEntry.setDate(LocalDateTime.now());
             journalEntryService.saveEntry(myEntry);
             return new ResponseEntity<>(myEntry, HttpStatus.CREATED);
         } catch (Exception e) {

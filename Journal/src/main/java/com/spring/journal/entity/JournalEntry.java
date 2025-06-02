@@ -2,9 +2,9 @@ package com.spring.journal.entity;
 import java.time.LocalDateTime;
 
 import lombok.Data;
-import lombok.Getter;
+//import lombok.Getter;
 import lombok.NonNull;
-import lombok.Setter;
+//import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
