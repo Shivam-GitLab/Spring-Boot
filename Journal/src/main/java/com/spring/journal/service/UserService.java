@@ -40,6 +40,8 @@ public class UserService {
         return userRepository.findByUserName(username);
     }
 }
+// This service class acts as a bridge between the controller and the repository.
+// It contains business logic and interacts with the UserRepository to perform CRUD operations.
 
 // controller ---> service --->  repository
 
