@@ -35,6 +35,10 @@ public class UserService {
     public User findByUserName(String username){
         return userRepository.findByUserName(username);
     }
+    // Remove
+    public User findByUserNames(String username){
+        return userRepository.findByUserName(username);
+    }
 }
 
 // controller ---> service --->  repository
