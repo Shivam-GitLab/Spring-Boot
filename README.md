@@ -20,25 +20,6 @@ This app allows users to securely create, read, update, and delete (CRUD) journa
 - **Build Tool**: Maven
 - **Testing**: Postman / Swagger
 
-## 📁 Project Structure
-
-journal-app/
-│
-├── src/
-│ ├── main/
-│ │ ├── java/
-│ │ │ └── com.journalapp/
-│ │ │ ├── controller/
-│ │ │ ├── model/
-│ │ │ ├── repository/
-│ │ │ ├── service/
-│ │ │ └── JournalApp.java
-│ │ └── resources/
-│ │ ├── application.properties
-│ │ └── static/
-│
-├── pom.xml
-└── README.md
 
 markdown
 Copy
